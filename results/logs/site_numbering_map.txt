@@ -1,0 +1,3 @@
+Getting numbering_reference_accession='QHD43416.1' to reference_fasta='results/site_numbering/numbering_reference.fa'
+Writing alignment to results/site_numbering/alignment.fa
+Writing site map to results/site_numbering/site_numbering_map.csv

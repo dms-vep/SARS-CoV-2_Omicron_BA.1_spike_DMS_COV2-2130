@@ -1,0 +1,12 @@
+Input Notebook:  dms-vep-pipeline/notebooks/fit_polyclonal.ipynb
+Output Notebook: results/notebooks/fit_polyclonal_Lib-2_2022-03-14_thaw-3_COV2-2130_1.ipynb
+Executing:   0%|          | 0/27 [00:00<?, ?cell/s]0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Executing notebook with kernel: python3
+Executing:   4%|▎         | 1/27 [00:02<00:58,  2.25s/cell]Executing:   7%|▋         | 2/27 [00:03<00:46,  1.87s/cell]Executing:  22%|██▏       | 6/27 [00:03<00:09,  2.23cell/s]Executing:  33%|███▎      | 9/27 [00:05<00:08,  2.25cell/s]Executing:  48%|████▊     | 13/27 [00:05<00:03,  3.97cell/s]Executing:  59%|█████▉    | 16/27 [00:05<00:02,  5.44cell/s]Executing:  70%|███████   | 19/27 [00:06<00:01,  4.96cell/s]Executing:  74%|███████▍  | 20/27 [00:20<00:01,  4.96cell/s]Executing:  78%|███████▊  | 21/27 [00:38<00:23,  3.90s/cell]Executing:  89%|████████▉ | 24/27 [00:38<00:07,  2.61s/cell]Executing:  96%|█████████▋| 26/27 [00:40<00:02,  2.20s/cell]Executing: 100%|██████████| 27/27 [00:41<00:00,  1.54s/cell]

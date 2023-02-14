@@ -1,0 +1,4 @@
+library,antibody_sample,no-antibody_sample,antibody,antibody_concentration,antibody_count,antibody_frac,no-antibody_count,no-antibody_frac
+Lib-2,2022-03-14_thaw-3_antibody_COV2-2130_50.0_1,2022-03-14_thaw-3_no-antibody_control_1,COV2-2130,50,6599253,0.326,388101,0.03758
+Lib-2,2022-03-14_thaw-3_antibody_COV2-2130_200.0_1,2022-03-14_thaw-3_no-antibody_control_1,COV2-2130,200,7682354,0.526,388101,0.03758
+Lib-2,2022-03-14_thaw-3_antibody_COV2-2130_400.0_1,2022-03-14_thaw-3_no-antibody_control_1,COV2-2130,400,5979290,0.5759,388101,0.03758

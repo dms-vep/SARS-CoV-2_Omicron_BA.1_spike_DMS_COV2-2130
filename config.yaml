@@ -1,0 +1,154 @@
+# Config for analysis
+
+# ----------------------------------------------------------------------------
+# Relative paths from your top-level Snakefile to where you have the pipeline
+# submodule cloned, and where you build the docs. Typically your top-level
+# Snakefile will be in the root directory and paths will be `dms-vep-pipeline`
+# and `./`, but in this example they are upstream from this subdirectory.
+# ----------------------------------------------------------------------------
+pipeline_path: dms-vep-pipeline
+docs: docs
+
+# ----------------------------------------------------------------------------
+# Details on repo, used for docs. Change this to details for your project.
+# ----------------------------------------------------------------------------
+github_repo: SARS-CoV-2_Omicron_BA.1_spike_DMS_COV2-2130
+github_user: dms-vep
+github_branch: main  # main branch for repo, assume renamed from master -> main
+description: Deep mutational scanning of SARS-CoV-2 Omicron BA.1 spike and mapping of escape mutations for COV2-2130 and its derivative antibody
+year: 2023
+authors: Bernadeta Dadonaite and Jesse Bloom
+
+# ----------------------------------------------------------------------------
+# Parameters related to building the codon variants
+# ----------------------------------------------------------------------------
+
+# There are two ways you can get the codon variants: download a pre-built codon
+# variant table, or build them from PacBio CCSs yourself. If you are using
+# pre-built ones, then specify the links to URLs giving the codon variants,
+# gene sequence, and protein sequence for the pre-built table under `prebuilt_variants`.
+# Otherwise, specify the other variables. If `prebuilt_variants` is specified, all
+# other variables in this section are ignored (and do not need to be specified at all).
+
+# If using pre-built variants specify URL for pre-built codon-variant table
+# and gene (codon) sequence. Here we use the tables from:
+# https://github.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs
+prebuilt_variants: https://raw.githubusercontent.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/main/results/variants/codon_variants.csv
+prebuilt_geneseq: https://raw.githubusercontent.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/main/results/gene_sequence/codon.fasta
+
+# ----------------------------------------------------------------------------
+# Parameters related to computing functional scores
+# ----------------------------------------------------------------------------
+
+# If you want to use prebuilt functional scores just taken from another repo, then
+# set the `prebuilt_muteffects` variable below to the URL for pre-built effects of
+# mutations on the observed phenotype. In that case, all other variables specified in this
+# section will be ignored and can be deleted.
+prebuilt_muteffects: https://raw.githubusercontent.com/dms-vep/SARS-CoV-2_Omicron_BA.1_spike_DMS_mAbs/main/results/muteffects_functional/muteffects_observed.csv
+
+# ----------------------------------------------------------------------------
+# Parameters for analyses downstream of building the codon variants
+# ----------------------------------------------------------------------------
+# Parameters for processing Illumina barcodes
+illumina_barcode_parser_params:
+  upstream: AACTCCACTAGGAACATTTCTCTCTCGAATCTAGA
+  downstream: ''
+  minq: 20
+  upstream_mismatch: 2
+
+# Require samples to have an average of >= this many counts per variant.
+# Error raised for any sample with < this many counts unless it is specified
+# for `exclude_after_counts` in `barcode_runs`
+min_avg_counts: 20  # consider value more like ~20 for real pipelines
+
+# Parameters for antibody escape-probability calculation.
+# Require neut standard to have at least this many counts
+# and this much fraction of total counts or raise error:
+prob_escape_min_neut_standard_count: 1000
+prob_escape_min_neut_standard_frac: 0.0005
+# Only compute escape probabilities for variants with at least this many
+# counts and this fraction of total counts in no-antibody sample:
+prob_escape_min_no_antibody_counts: 20
+prob_escape_min_no_antibody_frac: 0.000001  # make smaller for large libraries, say 0.1 / (library size)
+# when averaging antibody escape values, take the "median" or "mean"?
+escape_avg_method: median
+
+# ----------------------------------------------------------------------------
+# Input data to dms-vep-pipeline downstream of building codon variants
+# ----------------------------------------------------------------------------
+
+# Map sequential 1, 2, numbering of gene in PacBio amplicon to the desired
+# final reference numbering scheme. Unlike in the `dms-vep-pipeline`
+# test example, here we create this mapping from the Genbank accession.
+# Add a column called "region" that assigns each site to a
+# region of the protein (eg, domain like RBD or NTD).
+numbering_reference_accession: QHD43416.1  # Wuhan-Hu-1 spike
+# file that maps reference sites (Wuhan-Hu-1) to regions
+reference_site_regions: data/reference_site_to_region.csv
+# generated file by `Snakefile` with reference site numbering
+site_numbering_map: results/site_numbering/site_numbering_map.csv
+
+# Classify mutations into different categories, such as which ones are
+# designed to be in the library.
+mutation_design_classification: library_design/results/aggregated_mutations.csv
+
+# Neutralization standard barcodes
+neut_standard_barcodes: data/neutralization_standard_barcodes.csv
+
+# Illumina barcode sequencing
+barcode_runs: data/barcode_runs.csv
+
+# configuration for polyclonal fitting
+fit_polyclonal_threads: 2  # threads to use bootstrapping polyclonal models
+polyclonal_config: data/polyclonal_config.yaml
+
+# ----------------------------------------------------------------------------
+# Names of output directories / files
+# ----------------------------------------------------------------------------
+# directory with logs from running snakemake steps
+logdir: results/logs
+
+# gene sequence extracted from PacBio amplicon
+gene_sequence_codon: results/gene_sequence/codon.fasta
+gene_sequence_protein: results/gene_sequence/protein.fasta
+
+# processing of PacBio CCSs to create codon-variant table
+process_ccs_dir: results/process_ccs
+aligned_ccs_file: results/process_ccs/CCSs_aligned_to_amplicon.csv
+nt_variants: results/variants/nt_variants.csv
+codon_variants: results/variants/codon_variants.csv
+
+# barcode sequencing
+processed_barcode_runs: results/barcode_runs/processed_barcode_runs.csv
+barcode_counts_dir: results/barcode_runs/counts_by_sample
+barcode_counts_invalid_dir: results/barcode_runs/counts_invalid_by_sample
+barcode_fates_dir: results/barcode_runs/fates_by_sample
+
+# variant counts
+variant_counts_dir: results/variant_counts
+variant_avg_counts_plot: results/variant_counts/avg_counts_per_variant.html
+variant_avg_counts_csv: results/variant_counts/avg_counts_per_variant.csv
+
+# escape probabilities for antibody selections
+prob_escape_dir: results/prob_escape
+antibody_selections: results/prob_escape/antibody_selections.csv
+
+# polyclonal fitting directory
+polyclonal_dir: results/polyclonal_fits
+
+# antibody-escape values
+escape_dir: results/antibody_escape
+
+# functional scores for functional selections
+func_score_dir: results/func_scores
+functional_selections: results/func_scores/functional_selections.csv
+
+# global epistasis fitting directory
+globalepistasis_dir: results/globalepistasis_fits
+
+# mutation effects on function (viral entry) averaged over replicates
+muteffects_observed: results/muteffects_functional/muteffects_observed.csv
+muteffects_latent: results/muteffects_functional/muteffects_latent.csv
+
+# html documentation
+docs_source_dir: results/docs_source
