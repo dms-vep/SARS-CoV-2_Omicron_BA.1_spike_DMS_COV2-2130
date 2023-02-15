@@ -1,6 +1,6 @@
 Input Notebook:  notebooks/compare_IC50s.ipynb
 Output Notebook: results/notebooks/compare_IC50s.ipynb
-Executing:   0%|          | 0/11 [00:00<?, ?cell/s]0.01s - Debugger warning: It seems that frozen modules are being used, which may
+Executing:   0%|          | 0/11 [00:00<?, ?cell/s]0.00s - Debugger warning: It seems that frozen modules are being used, which may
 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
 0.00s - to python to disable frozen modules.
 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
@@ -9,4 +9,4 @@ Output Notebook: results/notebooks/compare_IC50s.ipynb
 0.00s - to python to disable frozen modules.
 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
 Executing notebook with kernel: python3
-Executing:   9%|▉         | 1/11 [00:10<01:43, 10.31s/cell]Executing:  18%|█▊        | 2/11 [00:14<00:58,  6.50s/cell]Executing:  45%|████▌     | 5/11 [00:14<00:11,  1.88s/cell]Executing:  55%|█████▍    | 6/11 [00:30<00:09,  1.88s/cell]Executing:  64%|██████▎   | 7/11 [00:54<00:36,  9.24s/cell]Executing:  91%|█████████ | 10/11 [00:54<00:05,  5.01s/cell]Executing: 100%|██████████| 11/11 [00:55<00:00,  5.03s/cell]
+Executing:   9%|▉         | 1/11 [00:04<00:46,  4.70s/cell]Executing:  18%|█▊        | 2/11 [00:07<00:30,  3.34s/cell]Executing:  64%|██████▎   | 7/11 [00:39<00:23,  5.80s/cell]Executing:  91%|█████████ | 10/11 [00:39<00:03,  3.48s/cell]Executing: 100%|██████████| 11/11 [00:40<00:00,  3.66s/cell]

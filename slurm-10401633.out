@@ -1,0 +1,42 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+all                  1              1              1
+compare_IC50s        1              1              1
+docs_index           1              1              1
+make_nblink          1              1              1
+sphinx_build         1              1              1
+total                5              1              1
+
+Select jobs to execute...
+
+[Tue Feb 14 19:41:01 2023]
+rule compare_IC50s:
+    input: results/antibody_escape/COV2-2130.pickle, results/antibody_escape/2130-1-0114-112.pickle, results/muteffects_functional/muteffects_observed.csv, notebooks/compare_IC50s.ipynb
+    output: results/notebooks/compare_IC50s.ipynb
+    log: results/logs/compare_IC50s.txt
+    jobid: 47
+    reason: Missing output files: results/notebooks/compare_IC50s.ipynb; Updated input files: notebooks/compare_IC50s.ipynb
+    resources: tmpdir=/loc/scratch/10401633
+
+Activating conda environment: .snakemake/conda/0773f21e8ca7fd0085a59061dd1b6349_
+[Tue Feb 14 19:41:14 2023]
+Error in rule compare_IC50s:
+    jobid: 47
+    input: results/antibody_escape/COV2-2130.pickle, results/antibody_escape/2130-1-0114-112.pickle, results/muteffects_functional/muteffects_observed.csv, notebooks/compare_IC50s.ipynb
+    output: results/notebooks/compare_IC50s.ipynb
+    log: results/logs/compare_IC50s.txt (check log file(s) for error details)
+    conda-env: /fh/fast/bloom_j/computational_notebooks/bdadonai/2023/SARS-CoV-2_Omicron_BA.1_spike_DMS_COV2-2130/.snakemake/conda/0773f21e8ca7fd0085a59061dd1b6349_
+    shell:
+        papermill notebooks/compare_IC50s.ipynb results/notebooks/compare_IC50s.ipynb &> results/logs/compare_IC50s.txt
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job compare_IC50s since they might be corrupted:
+results/notebooks/compare_IC50s.ipynb
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-02-14T194052.982939.snakemake.log
