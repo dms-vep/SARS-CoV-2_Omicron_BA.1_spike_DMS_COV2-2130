@@ -45,3 +45,6 @@ Interactive plots of mutation antibody escape
 - `2130-1-0114-112 escape plot <2130-1-0114-112_escape_plot.html>`_
 - `COV2-2130 escape plot <COV2-2130_escape_plot.html>`_
 
+Additional plots
+----------------
+ - `COV2-2130_vs_2130-1-0114-112_escape <COV2-2130_vs_2130-1-0114-112_escape.html>`_
