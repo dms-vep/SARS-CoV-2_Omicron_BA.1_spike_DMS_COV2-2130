@@ -103,6 +103,17 @@ fit_polyclonal_threads: 2  # threads to use bootstrapping polyclonal models
 polyclonal_config: data/polyclonal_config.yaml
 
 # ----------------------------------------------------------------------------
+# Custom analyses in Snakefile
+# ----------------------------------------------------------------------------
+
+# configuration for custom escape map comparisons in Snakefile
+# provide name of comparison and then antibodies to compare
+compare_escape_maps:
+  COV2-2130_vs_2130-1-0114-112_escape:
+    - COV2-2130
+    - 2130-1-0114-112
+
+# ----------------------------------------------------------------------------
 # Names of output directories / files
 # ----------------------------------------------------------------------------
 # directory with logs from running snakemake steps
