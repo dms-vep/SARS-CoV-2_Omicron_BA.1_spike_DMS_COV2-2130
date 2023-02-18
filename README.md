@@ -1,7 +1,7 @@
-# Deep mutational scanning of SARS-CoV-2 Omicron BA.1 spike and mapping of escape variants for COV-2130 antibody
+# Deep mutational scanning of SARS-CoV-2 Omicron BA.1 spike and mapping of escape variants for COV2-2130 antibody
 Study by Bernadeta Dadonaite and Jesse Bloom.
 
-Measures escape from antibody COV-2130 and its derivative 2130-1-0114-112
+Measures escape from antibody COV2-2130 and its derivative 2130-1-0114-112
 
 For documentation of the analysis, see [https://dms-vep.github.io/SARS-CoV-2_Omicron_BA.1_spike_DMS_COV2-2130/](https://dms-vep.github.io/SARS-CoV-2_Omicron_BA.1_spike_DMS_COV2-2130/).
 
